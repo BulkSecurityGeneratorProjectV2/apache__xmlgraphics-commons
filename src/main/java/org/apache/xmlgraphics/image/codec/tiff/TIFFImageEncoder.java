@@ -36,6 +36,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -477,7 +478,7 @@ public class TIFFImageEncoder extends ImageEncoderImpl {
 
                 try {
                     // Attempt to create a temporary file.
-                    tempFile = File.createTempFile("jai-SOS-", ".tmp");
+                    tempFile = Files.createTempFile("jai-SOS-", ".tmp").toFile();
                     tempFile.deleteOnExit();
                     RandomAccessFile raFile = new RandomAccessFile(tempFile, "rw");
                     output = new SeekableOutputStream(raFile);
